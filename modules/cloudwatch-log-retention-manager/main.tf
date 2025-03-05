@@ -7,14 +7,14 @@ locals {
 ##################
 module "lambda_function" {
   source  = "terraform-aws-modules/lambda/aws"
-  version = "~> 5.0"
+  version = "~> 7.20.0"
 
   create = local.create
 
   function_name = var.name
   description   = var.description
   handler       = "log_retention_manager.lambda_handler"
-  runtime       = "python3.10"
+  runtime       = "python3.13"
   publish       = true
 
   memory_size           = var.memory_size
@@ -61,7 +61,7 @@ module "lambda_function" {
 ########################
 module "eventbridge" {
   source  = "terraform-aws-modules/eventbridge/aws"
-  version = "~> 2.3"
+  version = "~> 3.14.3"
 
   create = local.create
 

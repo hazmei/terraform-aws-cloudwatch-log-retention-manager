@@ -1,6 +1,9 @@
 import boto3
 import os
+import logging
 
+logger = logging.getLogger()
+logger.setLevel("INFO")
 
 def lambda_handler(event, context):
     default_region = os.environ.get('AWS_REGION', 'us-east-1')
@@ -11,7 +14,7 @@ def lambda_handler(event, context):
 
     for region_dict in client.describe_regions()['Regions']:
         region = region_dict['RegionName']
-        print('Region:', region)
+        logger.debug('Region:', region)
         logs = session.client('logs', region_name=region)
         paginator = logs.get_paginator('describe_log_groups')
 
@@ -28,7 +31,3 @@ def lambda_handler(event, context):
                     )
 
     return 'CloudWatchLogRetention.Success'
-
-
-if __name__ == '__main__':
-    lambda_handler({}, {})
