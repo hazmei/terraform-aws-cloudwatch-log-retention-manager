@@ -24,6 +24,10 @@ module "lambda_function" {
 
   cloudwatch_logs_retention_in_days = var.cloudwatch_logs_retention_in_days
 
+  logging_log_format            = var.logging_log_format
+  logging_system_log_level      = var.logging_system_log_level
+  logging_application_log_level = var.logging_application_log_level
+
   create_package = var.create_package
   source_path    = var.source_path != null ? var.source_path : "${path.module}/src/log_retention_manager.py"
 

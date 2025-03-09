@@ -3,7 +3,6 @@ import os
 import logging
 
 logger = logging.getLogger()
-logger.setLevel("INFO")
 
 def lambda_handler(event, context):
     default_region = os.environ.get('AWS_REGION', 'us-east-1')
@@ -21,7 +20,7 @@ def lambda_handler(event, context):
 
     for region_dict in client.describe_regions()['Regions']:
         region = region_dict['RegionName']
-        logger.info("Checking %s region", region)
+        logger.debug("Checking %s region", region)
         logs = session.client('logs', region_name=region)
         paginator = logs.get_paginator('describe_log_groups')
 
@@ -39,5 +38,4 @@ def lambda_handler(event, context):
                         retentionInDays=retain_days
                     )
 
-    logger.info("Checking completed")
     return 'CloudWatchLogRetention.Success'
