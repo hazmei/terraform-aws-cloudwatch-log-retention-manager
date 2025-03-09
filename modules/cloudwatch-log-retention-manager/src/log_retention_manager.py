@@ -3,7 +3,7 @@ import os
 import logging
 
 logger = logging.getLogger()
-logging.basicConfig(level=logging.INFO, format='%(message)s')
+logger.setLevel("INFO")
 
 def lambda_handler(event, context):
     default_region = os.environ.get('AWS_REGION', 'us-east-1')
