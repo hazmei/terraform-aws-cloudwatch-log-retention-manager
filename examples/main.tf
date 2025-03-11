@@ -24,7 +24,7 @@ locals {
 ####################################################
 
 module "cloudwatch_log_retention_manager" {
-  source = "../../modules/cloudwatch-log-retention-manager"
+  source = "../."
 
   name = local.name
 

@@ -34,7 +34,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_cloudwatch_log_retention_manager"></a> [cloudwatch\_log\_retention\_manager](#module\_cloudwatch\_log\_retention\_manager) | ../../modules/cloudwatch-log-retention-manager | n/a |
+| <a name="module_cloudwatch_log_retention_manager"></a> [cloudwatch\_log\_retention\_manager](#module\_cloudwatch\_log\_retention\_manager) | ../. | n/a |
 
 ## Resources
 
