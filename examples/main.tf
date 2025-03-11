@@ -35,11 +35,11 @@ module "cloudwatch_log_retention_manager" {
   create_package = false
 
   environment_variables = {
-    RETAIN_DAYS = 90
+    RETAIN_DAYS       = 90
+    LOG_GROUPS_TO_SET = "/aws/lambda/sqs-loader" # set to limit which log groups to set the retention in days if it wasn't specified
   }
 
   schedule_expression = "rate(6 hours)"
-  # role_arn = "arn:aws:iam::835367859851:role/my-custom-role"
 
   tags = local.tags
 }

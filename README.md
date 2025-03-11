@@ -1,13 +1,21 @@
 # CloudWatch Log Retention Manager
 
+This module is a fork of [terraform-aws-modules/terraform-aws-solutions](https://github.com/terraform-aws-modules/terraform-aws-solutions).
+
 Terraform module that creates a Lambda Function triggered by EventBridge Scheduler.
 
-Lambda Function goes through all AWS regions and sets the retention period of CloudWatch Logs to the numeric value (`RETAIN_DAYS`) if it wasn't specified already.
+Lambda Function goes through all AWS regions and sets the retention period of CloudWatch Logs (if `LOG_GROUPS_TO_SET` env var is not set) to the numeric value (`RETAIN_DAYS`) if it wasn't specified already.
 
-This Terraform module is the part of [serverless.tf framework](https://github.com/antonbabenko/serverless.tf), which aims to simplify all operations when working with the serverless in Terraform.
+## Note
+
+If `LOG_GROUPS_TO_SET` is set, it will match the log group which has a substring of the `LOG_GROUPS_TO_SET`.
+
+Example:  
+`LOG_GROUPS_TO_SET = "/aws/lambda/sqs"`  
+If there are log group with the following names: `/aws/lambda/sqs-test` and the retain in days is not set, it will match and set the log retention.
 
 ## Examples
-* [CloudWatch Log Retention Manager](https://github.com/terraform-aws-modules/terraform-aws-solutions/tree/master/examples/cloudwatch-log-retention-manager)
+* [CloudWatch Log Retention Manager](https://github.com/hazmei/terraform-aws-cloudwatch-log-retention-manager/blob/master/examples)
 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -73,9 +81,7 @@ No resources.
 
 ## Authors
 
-Module managed by [Anton Babenko](https://github.com/antonbabenko). Check out [serverless.tf](https://serverless.tf) to learn more about doing serverless with Terraform.
-
-Please reach out to [Betajob](https://www.betajob.com/) if you are looking for commercial support for your Terraform, AWS, or serverless project.
+Module managed by [Hazmei Bin Abdul Rahman](https://github.com/hazmei). 
 
 
 ## License
