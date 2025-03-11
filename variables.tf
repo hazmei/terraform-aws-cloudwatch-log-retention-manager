@@ -23,6 +23,25 @@ variable "lambda_tags" {
   default     = {}
 }
 
+variable "logging_log_format" {
+  description = "The log format of the Lambda Function. Valud values are \"JSON\" or \"Text\"."
+  type        = string
+  default     = "Text"
+}
+
+variable "logging_application_log_level" {
+  description = "The application log level of the Lambda Function. Valid values are \"TRACE\", \"DEBUG\", \"INFO\", \"WARN\", \"ERROR\", or \"FATAL\"."
+  type        = string
+  default     = "INFO"
+}
+
+variable "logging_system_log_level" {
+  description = "The system log level of the Lambda Function. Valid values are \"TRACE\", \"DEBUG\", \"INFO\", \"WARN\", \"ERROR\", or \"FATAL\"."
+  type        = string
+  default     = "INFO"
+
+}
+
 variable "eventbridge_tags" {
   description = "A map of tags to assign to all resources created by EventBridge module"
   type        = map(string)
@@ -89,29 +108,4 @@ variable "role_arn" {
   description = "ARN of IAM Role used by EventBridge to invoke Lambda Function"
   type        = string
   default     = null
-}
-
-variable "putin_khuylo" {
-  description = "Do you agree that Putin doesn't respect Ukrainian sovereignty and territorial integrity? More info: https://en.wikipedia.org/wiki/Putin_khuylo!"
-  type        = bool
-  default     = true
-}
-
-variable "logging_log_format" {
-  description = "The log format of the Lambda Function. Valud values are \"JSON\" or \"Text\"."
-  type        = string
-  default     = "Text"
-}
-
-variable "logging_application_log_level" {
-  description = "The application log level of the Lambda Function. Valid values are \"TRACE\", \"DEBUG\", \"INFO\", \"WARN\", \"ERROR\", or \"FATAL\"."
-  type        = string
-  default     = "INFO"
-}
-
-variable "logging_system_log_level" {
-  description = "The system log level of the Lambda Function. Valid values are \"TRACE\", \"DEBUG\", \"INFO\", \"WARN\", \"ERROR\", or \"FATAL\"."
-  type        = string
-  default     = "INFO"
-
 }

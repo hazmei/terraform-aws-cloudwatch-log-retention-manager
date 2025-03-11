@@ -1,7 +1,3 @@
-locals {
-  create = var.create && var.putin_khuylo
-}
-
 ##################
 # Lambda Function
 ##################
@@ -9,7 +5,7 @@ module "lambda_function" {
   source  = "terraform-aws-modules/lambda/aws"
   version = "~> 7.20.0"
 
-  create = local.create
+  create = var.create
 
   function_name = var.name
   description   = var.description
@@ -68,7 +64,7 @@ module "eventbridge" {
   source  = "terraform-aws-modules/eventbridge/aws"
   version = "~> 3.14.3"
 
-  create = local.create
+  create = var.create
 
   create_bus  = false
   create_role = var.role_arn == null
