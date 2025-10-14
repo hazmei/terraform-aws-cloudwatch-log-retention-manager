@@ -3,9 +3,10 @@
 ##################
 module "lambda_function" {
   source  = "terraform-aws-modules/lambda/aws"
-  version = "~> 7.20.0"
+  version = "~> 8.1.0"
 
   create = var.create
+  region = var.region
 
   function_name = var.name
   description   = var.description
@@ -62,9 +63,10 @@ module "lambda_function" {
 ########################
 module "eventbridge" {
   source  = "terraform-aws-modules/eventbridge/aws"
-  version = "~> 3.14.3"
+  version = "~> 4.2.1"
 
   create = var.create
+  region = var.region
 
   create_bus  = false
   create_role = var.role_arn == null

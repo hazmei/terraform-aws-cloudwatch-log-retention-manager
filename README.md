@@ -24,7 +24,7 @@ If there are log group with the following names: `/aws/lambda/sqs-test` and the 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.64 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.0 |
 
 ## Providers
 
@@ -34,8 +34,8 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_eventbridge"></a> [eventbridge](#module\_eventbridge) | terraform-aws-modules/eventbridge/aws | ~> 3.14.3 |
-| <a name="module_lambda_function"></a> [lambda\_function](#module\_lambda\_function) | terraform-aws-modules/lambda/aws | ~> 7.20.0 |
+| <a name="module_eventbridge"></a> [eventbridge](#module\_eventbridge) | terraform-aws-modules/eventbridge/aws | ~> 4.2.1 |
+| <a name="module_lambda_function"></a> [lambda\_function](#module\_lambda\_function) | terraform-aws-modules/lambda/aws | ~> 8.1.0 |
 
 ## Resources
 
@@ -58,6 +58,7 @@ No resources.
 | <a name="input_logging_system_log_level"></a> [logging\_system\_log\_level](#input\_logging\_system\_log\_level) | The system log level of the Lambda Function. Valid values are "TRACE", "DEBUG", "INFO", "WARN", "ERROR", or "FATAL". | `string` | `"INFO"` | no |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | Amount of memory in MB your Lambda Function can use at runtime. Valid value between 128 MB to 10,240 MB (10 GB), in 64 MB increments. | `number` | `256` | no |
 | <a name="input_name"></a> [name](#input\_name) | Lambda function name | `string` | `"cloudwatch-log-retention-manager"` | no |
+| <a name="input_region"></a> [region](#input\_region) | AWS region to deploy the resources to | `string` | `null` | no |
 | <a name="input_role_arn"></a> [role\_arn](#input\_role\_arn) | ARN of IAM Role used by EventBridge to invoke Lambda Function | `string` | `null` | no |
 | <a name="input_schedule_expression"></a> [schedule\_expression](#input\_schedule\_expression) | Schedule expression for EventBridge to trigger Lambda function. Can be cron() or rate(). | `string` | `"rate(12 hours)"` | no |
 | <a name="input_source_path"></a> [source\_path](#input\_source\_path) | Source path object with instructions on how to build Lambda function package | `any` | `null` | no |

@@ -4,6 +4,12 @@ variable "create" {
   default     = true
 }
 
+variable "region" {
+  description = "AWS region to deploy the resources to"
+  type        = string
+  default     = null
+}
+
 variable "create_package" {
   description = "Whether to create Lambda function package (requires Python)"
   type        = string
